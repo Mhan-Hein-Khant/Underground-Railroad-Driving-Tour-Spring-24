@@ -1,0 +1,334 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <link rel="Stylesheet" href="UGRRStyles.css"> 
+        <link rel="Stylesheet" href="MapPageStyles.css">
+        <style>
+            body{
+                background: url("tablebg.png") repeat;
+                background-size: cover;
+                overflow-y: hidden;
+            }
+            /* Styles for the pop-up */
+            #popup {
+                display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: rgba(0, 0, 0, 0.8);
+                color: white;
+                padding: 20px;
+                border-radius: 10px;
+                z-index: 9999;
+            }
+            footer{
+                position: absolute;
+                background: #111;
+                height: auto;
+                width: 100vw;
+                font-family: "Open Sans";
+                color: #fff;
+            }
+            .footer-content h3{
+                font-size: 1.8rem;
+                font-weight: 400;
+                text-transform: capitalize;
+                line-height: 3rem;
+            }
+            .footer-content  ul li{
+                text-align: center;
+                font-size: 1.13rem;
+                display: inline-block;
+                padding: 0px 15px;
+            }
+            .footer-bottom{
+                background: #000;
+                width: 100vw;
+                padding: 20px 0;
+                text-align: center;
+            }
+            .footer-bottom p{
+                font-size: 14px;
+                word-spacing: 2px;
+                text-transform: capitalize;
+            }
+            .footer-bottom span{
+                text-transform: uppercase;
+                opacity: .4;
+                font-weight: 200;
+            }
+    
+            .footer-bottom a{
+                text-decoration: none;
+                color: white;
+            }
+    
+            .footer-bottom a:hover{
+                color: lightblue;
+            }
+            
+    
+            
+        </style>
+        <script src="locationData.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                function generateLocationList() {
+                    var locationsList = document.getElementById("locationsList");
+                    locationsList.innerHTML = ""; // Clear existing content
+                    let listPopulated = false; // Flag to check if any list items are added
+        
+                    if (!locationData || locationData.length === 0) {
+                        // If there are no locations or locationData is undefined, add a placeholder item
+                        var emptyListItem = document.createElement("li");
+                        emptyListItem.textContent = "Nothing to see in this area";
+                        emptyListItem.style.paddingBottom = "20px";
+                        locationsList.appendChild(emptyListItem);
+                    } else {
+                        // Iterate through locationData and create list items
+                        locationData.forEach(function(location) {
+                            if (location.town && location.name) { // Ensure both town and name are present
+                                var listItem = document.createElement("li");
+                                listItem.setAttribute("data-town", location.town);
+                                listItem.style.paddingBottom = "20px";
+        
+                                var link = document.createElement("a");
+                                link.href = "UGRRsiteTemplate.html?name=" + encodeURIComponent(location.name);
+                                link.classList.add("link");
+                                link.textContent = location.name;
+                                listItem.appendChild(link);
+                                locationsList.appendChild(listItem);
+        
+                                link.addEventListener("click", function(event) {
+                                    event.preventDefault();
+                                    window.location.href = "UGRRsiteTemplate.html?name=" + encodeURIComponent(location.name);
+                                });
+        
+                                listPopulated = true; // Mark that we have populated the list
+                            }
+                        });
+        
+                        if (!listPopulated) {
+                            // If no valid list items have been added, show the placeholder message
+                            var emptyListItem = document.createElement("li");
+                            emptyListItem.textContent = "No known locations in this area";
+                            emptyListItem.style.paddingBottom = "20px";
+                            locationsList.appendChild(emptyListItem);
+                        }
+                    }
+                }
+        
+                generateLocationList();
+        
+                // Ensure displayPopup() is defined before calling it
+                if (typeof displayPopup === "function") {
+                    displayPopup();
+                }
+
+        // Display the pop-up when the page loads
+        displayPopup();
+    });
+
+    // Function to display the pop-up
+    function displayPopup() {
+        var popup = document.getElementById("popup");
+        popup.style.display = "block";
+
+        // Close the pop-up when clicked anywhere on the screen
+        document.body.addEventListener("click", closePopup);
+    }
+
+    // Function to close the pop-up
+    function closePopup() {
+        var popup = document.getElementById("popup");
+        popup.style.display = "none";
+        document.body.removeEventListener("click", closePopup);
+    }
+</script>
+
+    </head>
+
+    <body>
+        <nav>
+            <div class="logo">
+                <a style="text-decoration:none" href="index.html">
+                    <img src="logo.png" alt="Website Logo">
+                    <h1 style="font-size: 20px; padding-top: 0px;">Oswego<br>History<br>Tours</h1>
+                </a>
+            </div>
+            <!--link pages (styles page, exterior websites, map page, location page)-->
+
+            <div class="nav-items">
+                <a href="UGRRHOME.html">Home</a>
+                <a href="https://oswegohistorical.org/contact/">Contact</a>
+            </div>
+        </nav>
+        <div id="popup"><h3>Click on town names for available locations (click me to make me disappear) </h3></div>
+
+        <!--Map with clickable areas-->
+        <div class="big-container">
+            <div class="map-container">
+                <!-- Image map with associated map tag -->
+                <img src="UGRR_customMap_7.png" id="map-image" style="width: auto; max-width: 100%; height: auto;" alt="" usemap="#OswegoMap7"/>
+                <map name="OswegoMap7">
+                    <button class="map-button" id="Button1" data-town="Oswego"></button>
+                    <button class="map-button" id="Button2" data-town="Hannibal"></button>
+                    <button class="map-button" id="Button3" data-town="Granby"></button>
+                    <button class="map-button" id="Button4" data-town="Minetto"></button>
+                    <button class="map-button" id="Button5" data-town="Scriba"></button>
+                    <button class="map-button" id="Button6" data-town="Volney"></button>
+                    <button class="map-button" id="Button7" data-town="Schroeppel"></button>
+                    <button class="map-button" id="Button8" data-town="Palmero"></button>
+                    <button class="map-button" id="Button9" data-town="New Haven"></button>
+                    <button class="map-button" id="Button10" data-town="Mexico"></button>
+                    <button class="map-button" id="Button11" data-town="Hastings"></button>
+                    <button class="map-button" id="Button12" data-town="West Monroe"></button>
+                    <button class="map-button" id="Button13" data-town="Parish"></button>
+                    <button class="map-button" id="Button14" data-town="Albion"></button>
+                    <button class="map-button" id="Button15" data-town="Richland"></button>
+                    <button class="map-button" id="Button16" data-town="Sandy Creek"></button>
+                    <button class="map-button" id="Button17" data-town="Boylston"></button>
+                    <button class="map-button" id="Button18" data-town="Redfield"></button>
+                    <button class="map-button" id="Button19" data-town="Williamstown"></button>
+                    <button class="map-button" id="Button20" data-town="Amboy"></button>
+                    <button class="map-button" id="Button21" data-town="Constantia"></button>
+                    <button class="map-button" id="Button22" data-town="Orwell"></button>
+                    <button class="map-button" id="Button23" data-town="all"></button>
+                    
+                </map>
+                <script>
+                    var mapButtons = document.querySelectorAll('.map-button');
+                    var showAllButton = document.getElementById('showAllButton');
+                    var locationsList = document.getElementById('locationsList');
+                
+                    // Add event listener to the map buttons
+                    mapButtons.forEach(function(button) {
+                        button.addEventListener('click', function(event) {
+                            event.preventDefault(); // Prevent default link behavior
+                            var filterValue = button.getAttribute('data-town').toLowerCase();
+                            filterList(filterValue);
+                        });
+                    });
+                
+                    // Add event listener to the 'Show All' button
+                    showAllButton.addEventListener('click', function() {
+                        filterList('all');
+                    });
+                
+                    // Function to filter the list based on the town
+                    function filterList(filterValue) {
+                        // Get all list items from the unordered list
+                        var items = locationsList.querySelectorAll('li');
+                
+                        // Loop through all list items
+                        items.forEach(function(item) {
+                            // Get the value of the data-town attribute for the current item
+                            var town = item.getAttribute('data-town').toLowerCase();
+                
+                            // If the filter value matches the town or if filterValue is 'all', display the item, otherwise hide it
+                            if (town === filterValue || filterValue === 'all') {
+                                item.style.display = '';
+                            } 
+                            else {
+                                item.style.display = 'none';
+                            }
+                        });
+                    }
+                </script>
+                
+                
+                <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+                <script src="MapPageStyles.js"></script>
+                <script>$(document).ready(function(e){$("map").imageMapResize();});</script>
+            </div>
+            
+        
+            <div class="catalog-container">
+                <!--make sure to add two divs; 1 for map, and 1 for catalog-->
+                <h1 style="margin-left: 20px;">Locations</h1>
+                <br>
+                <ul id="locationsList" style="list-style-type: none">
+                </ul>  
+    
+            </div>
+
+            
+        </div>
+
+
+        <script>
+            var filterButtons = document.querySelectorAll('.filterButton');
+            var locationsList = document.getElementById('locationsList');
+        
+            // Add event listener to the buttons
+            filterButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var filterValue = button.getAttribute('data-town').toLowerCase();
+                    filterList(filterValue);
+                });
+            });
+        
+            // Function to filter the list based on the town
+            function filterList(filterValue) {
+    // Get all list items from the unordered list
+    var items = locationsList.querySelectorAll('li');
+    let visibleCount = 0; // Counter for visible items
+
+    // Loop through all list items
+    items.forEach(function(item) {
+        // Get the value of the data-town attribute for the current item
+        var town = item.getAttribute('data-town').toLowerCase();
+
+        // If the filter value matches the town or if filterValue is 'all', display the item, otherwise hide it
+        if (town === filterValue || filterValue === 'all') {
+            item.style.display = '';
+            visibleCount++; // Increment the count of visible items
+        } else {
+            item.style.display = 'none';
+        }
+    });
+
+    // After processing all items, check if no items were visible
+    if (visibleCount === 0) {
+        // Display a message element to show no locations available
+        showMessage('No locations in this area for now');
+    } else {
+        // Hide the message if there are visible items
+        hideMessage();
+    }
+}
+
+function showMessage(messageText) {
+    let messageElement = document.getElementById('noLocationsMessage');
+    if (!messageElement) {
+        messageElement = document.createElement('p');
+        messageElement.id = 'noLocationsMessage';
+        locationsList.parentNode.appendChild(messageElement);
+    }
+    messageElement.textContent = messageText;
+    messageElement.style.display = ''; // Make sure the message is visible
+    messageElement.style.paddingLeft = '20px';
+    messageElement.style.paddingBottom = '20px';
+}
+
+function hideMessage() {
+    let messageElement = document.getElementById('noLocationsMessage');
+    if (messageElement) {
+        messageElement.style.display = 'none'; // Hide the message
+    }
+}
+        </script>   
+
+
+    
+    </body>
+
+    <!-- <footer style="position: fixed; left: 0; bottom: 0; width: 100%; background-color: #333; color: white; text-align: center; padding: 10px 0;">
+
+        <p>Oswego County Historical Society © 2024 <br> Designed by <a href="Studentpage.html"><u>SUNY Oswego Students</u></a></p>
+
+    </footer> -->
+    
+</html>

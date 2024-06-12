@@ -1,0 +1,254 @@
+#Button1 {
+    width: 100px;
+    height: 50px;
+    left: 50px;
+    bottom: 375px;
+    font-size: small;
+    /* color: rgb(26, 107, 248); */
+    background-color: transparent;
+    /* border: 2px solid black */
+    border: none;
+}
+#Button2 {
+    width: 100px;
+    height: 50px;
+    right: 78px;
+    bottom: 255px;
+    font-size: small;
+    /* color: rgb(26, 107, 248); */
+    background-color: transparent;
+    /* border: 2px solid black */
+    border: none;;
+}
+#Button3 {
+    width: 100px;
+    height: 50px;
+    right: 106px;
+    bottom: 232px;
+    font-size: small;
+    /* color: rgb(26, 107, 248); */
+    background-color: transparent;
+    /* border: 2px solid black */
+    border: none;
+}
+#Button4 {
+    width: 35px;
+    height: 80px;
+    right: 225px;
+    bottom: 370px;
+    font-size: small;
+    /* color: rgb(26, 107, 248); */
+    background-color: transparent;
+    /* border: 2px solid black */
+    border: none;
+}
+#Button5 {
+    width: 100px;
+    height: 50px;
+    right: 255px;
+    bottom: 430px;
+    font-size: small;
+    /* color: rgb(26, 107, 248); */
+    background-color: transparent;
+    /* border: 2px solid black */
+    border: none;
+}
+#Button6 {
+    width: 100px;
+    height: 50px;
+    right: 350px;
+    bottom: 305px;
+    font-size: small;
+    /* color: rgb(26, 107, 248); */
+    background-color: transparent;
+    /* border: 2px solid black */
+    border: none;
+}
+#Button7 {
+    width: 100px;
+    height: 50px;
+    right: 400px;
+    bottom: 192px;
+    font-size: small;
+    /* color: rgb(26, 107, 248); */
+    background-color: transparent;
+    /* border: 2px solid black */
+    border: none;
+}
+#Button8 {
+    width: 100px;
+    height: 50px;
+    left: 312px;
+    bottom: 410px;
+    font-size: small;
+    /* color: rgb(26, 107, 248); */
+    background-color: transparent;
+    /* border: 2px solid black */
+    border: none;
+}
+#Button9 {
+    width: 100px;
+    height: 50px;
+    left: 150px;
+    bottom: 550px;
+    font-size: small;
+    /* color: rgb(26, 107, 248); */
+    background-color: transparent;
+    /* border: 2px solid black */
+    border: none;
+}
+#Button10 {
+    width: 100px;
+    height: 50px;
+    left: 125px;
+    bottom: 520px;
+    font-size: small;
+    /* color: rgb(26, 107, 248); */
+    background-color: transparent;
+    /* border: 2px solid black */
+    border: none;
+}
+#Button11 {
+    width: 100px;
+    height: 50px;
+    left: 23px;
+    bottom: 360px;
+    font-size: small;
+    /* color: rgb(26, 107, 248); */
+    background-color: transparent;
+    /* border: 2px solid black */
+    border: none;
+}
+#Button12 {
+    width: 100px;
+    height: 50px;
+    right: 30px;
+    bottom: 320px;
+    font-size: small;
+    /* color: rgb(26, 107, 248); */
+    background-color: transparent;
+    /* border: 2px solid black */
+    border: none;
+}
+#Button13 {
+    width: 100px;
+    height: 50px;
+    right: 136px;
+    bottom: 455px;
+    font-size: small;
+    /* color: rgb(26, 107, 248); */
+    background-color: transparent;
+    /* border: 2px solid black */
+    border: none;
+}
+#Button14 {
+    width: 100px;
+    height: 50px;
+    right: 220px;
+    bottom: 553px;
+    font-size: small;
+    /* color: rgb(26, 107, 248); */
+    background-color: transparent;
+    /* border: 2px solid black */
+    border: none;
+}
+#Button15 {
+    width: 100px;
+    height: 50px;
+    left: 440px;
+    bottom: 710px;
+    font-size: small;
+    /* color: rgb(26, 107, 248); */
+    background-color: transparent;
+    /* border: 2px solid black */
+    border: none;
+}
+#Button16 {
+    width: 100px;
+    height: 50px;
+    left: 360px;
+    bottom: 818px;
+    font-size: small;
+    /* color: rgb(26, 107, 248); */
+    background-color: transparent;
+    /* border: 2px solid black */
+    border: none;
+}
+#Button17 {
+    width: 100px;
+    height: 50px;
+    left: 370px;
+    bottom: 832px;
+    font-size: small;
+    /* color: rgb(26, 107, 248); */
+    background-color: transparent;
+    /* border: 2px solid black */
+    border: none;
+}
+#Button18 {
+    width: 100px;
+    height: 50px;
+    left: 350px;
+    bottom: 750px;
+    font-size: small;
+    /* color: rgb(26, 107, 248); */
+    background-color: transparent;
+    /* border: 2px solid black */
+    border: none;
+}
+#Button19 {
+    width: 100px;
+    height: 50px;
+    left: 150px;
+    bottom: 587px;
+    font-size: small;
+    /* color: rgb(26, 107, 248); */
+    background-color: transparent;
+    /* border: 2px solid black */
+    border: none;
+}
+#Button20 {
+    width: 100px;
+    height: 50px;
+    right: 20px;
+    bottom: 490px;
+    font-size: small;
+    /* color: rgb(26, 107, 248); */
+    background-color: transparent;
+    /* border: 2px solid black */
+    border: none;
+}
+#Button21 {
+    width: 100px;
+    height: 50px;
+    right: 177px;
+    bottom: 388px;
+    font-size: small;
+    /* color: rgb(26, 107, 248); */
+    background-color: transparent;
+    /* border: 2px solid black */
+    border: none;
+}
+#Button22 {
+    width: 100px;
+    height: 50px;
+    left: 610px;
+    bottom: 812px;
+    font-size: small;
+    /* color: rgb(26, 107, 248); */
+    background-color: transparent;
+    /* border: 2px solid black */
+    border: none;
+}
+#Button23 {
+    width: 100px;
+    height: 50px;
+    left: 630px;
+    bottom: 420px;
+    font-size: small;
+    /* color: rgb(26, 107, 248); */
+    background-color: transparent;
+    /* border: 2px solid black */
+    border: none;
+}
+

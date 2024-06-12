@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Splash Page</title>
+    <link rel="stylesheet" href="UGRRStyles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url("background.png") no-repeat;
+            background-size: cover;
+            height: 100vh; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 5vh;
+            padding-left: 1vw;
+            color: black;
+        }
+
+        .big-div {
+            display: flex; 
+            flex-direction: row; 
+        }
+        
+
+        .tour-buttons {
+            margin-top: 20px;
+            align-items: center;
+            justify-content: center; 
+            padding: 40px;
+        }
+
+        .tour-buttons a {
+            display: inline-block;
+            border-radius: 50%;  
+            overflow: hidden;  
+            box-shadow: 0 2vw 4vw rgba(0, 0, 0, 0.53); /* Adjusted shadow values */
+            transition: transform .5s ease;  
+            margin-bottom: 20px;  
+            display: flex; 
+            flex-direction: row;
+            width: 32vw;
+        }
+
+        .tour-buttons a:hover {
+            transform: scale(1.1); 
+        }
+
+        .tour-buttons img {
+            width: 32vw; 
+            height: auto;
+        }
+        .tour-buttons h1 {
+            text-align: center;
+        }
+        .label {
+            text-align: center;
+        }
+        /* @media (max-width: 800px) {
+            .big-div {
+                flex-direction: column;
+                align-items: center; 
+                justify-content: center; 
+            }
+
+            .tour-buttons {
+                padding: 10px;
+            }
+
+            .tour-buttons a {
+                min-width: 30vw; 
+            }
+
+            .tour-buttons img {
+                min-width: 30vw;
+                min-height: 30vh;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .label {
+                text-align: center;
+                
+            }
+        } */
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Oswego Historical Society Driving Tours</h1>
+    </div>
+    
+    
+    <!-- Tour buttons -->
+    <div class="big-div">
+        <div class="tour-buttons">
+            <a href="https://oswegohistory.tours/">
+                <img src="MaryWalker.png" alt="Mary Walker Tour">
+            </a>
+            <h1>Dr Mary E. Walker Tour</h1>
+        </div>
+        
+        <div class="tour-buttons">
+            <a href="UGRRHOME.html">
+                <img src="logo.png" alt="Underground Railroad Tour">
+            </a>
+            <h1>Underground Railroad Tour</h1>
+        </div>
+    </div>
+</body>
+</html>

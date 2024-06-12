@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>location page</title>
+    <link rel="stylesheet" href="UGRRStyles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(315deg, #152545 0%, #5184a8 100%);
+            background-size: auto;
+            background-position: center;
+            color: white;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color:black;
+            z-index: 1000; 
+        }
+        #map-container {
+            height: 400px;
+            width: 100%;
+            margin-top: 60px; 
+            margin-bottom: 20px;
+        }
+
+        #sidebar {
+            width: 450px;
+            overflow-y: auto;
+            height: 100vh;
+            position: fixed;
+            top: 100px;
+            right: 0;
+            background: #5184a8;
+            background: linear-gradient(180deg, #5184a8 0%, #152545 100%);
+            padding: 10px;
+            box-shadow: -3px 5.5px 10px 3px #000000;        
+        }
+
+        #sidebar img {
+            width: 100%;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        #enlarged-image {
+            cursor: pointer;
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            background-color: black;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+
+        #enlarged-image img {
+            padding-left: 55px;
+            cursor: pointer;
+            background-color: transparent;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        #textp {
+            color: black;
+            font-size: 18px;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            padding: 30px 60px;
+            max-width: 972px;
+            background-image: url('bgimg4.png');
+            background-size: cover;
+            background-position: center;
+        }
+        #speechButtonSummary {
+            width: 175px;
+            height: 50px;
+            display: block;
+            margin-top: 20px;
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 25px;
+            font-size: 18px;
+        }
+    
+        #stopButton {
+            left: 200px;
+            bottom: 70px;
+            width: 175px;
+            height: 50px;
+            display: block;
+            margin-top: 20px;
+            background-color: #c34747;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 25px;
+            font-size: 18px;
+        }
+        .read-more-button {
+            width: 160px;
+            height: 50px;
+            display: block;
+            margin-top: 20px;
+            background-color: #4787c3;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 25px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a style="text-decoration:none" href="index.html">
+                <img src="logo.png" alt="Website Logo">
+                <h1>Oswego History Tours</h1>
+            </a>
+        </div>
+
+        <div class="nav-items">
+            <a href="UGRRmapPage.html">Map Page</a>
+            <a href="https://www.rbhousemuseum.org/contact-us/">Contact</a>
+        </div>
+    </nav>
+    <div id="locationtitle">
+        <h1>Location of _____________</h1>
+    </div>
+    
+    <div id="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d2897.6695786234136!2d-76.55801592381577!3d43.425729867113276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x89d7649b6f0eae0d%3A0xdb753c0f827e4ffe!2s261%20Cemetery%20Rd%2C%20Oswego%2C%20NY%2013126!3m2!1d43.425726!2d-76.555441!5e0!3m2!1sen!2sus!4v1711137742131!5m2!1sen!2sus" width="972" height="460" style="border: 2px solid black;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>    
+    <div id="sidebar">
+        <h2>Some Location Photos</h2>
+        <img src="bgimg.png" alt="Image 1">
+        <img src="1.png" alt="Image 2">
+        <img src="2.png" alt="Image 3">
+        <img src="2.png" alt="Image 3">
+        <img src="2.png" alt="Image 3">
+        <img src="2.png" alt="Image 3">
+
+        <!-- Add more images as needed -->
+    </div>
+
+    <div id="enlarged-image">
+        <span id="close">X</span>
+        <img id="expanded-img" src="" alt="Enlarged Image">
+    </div>
+    <script>
+        // Image modal functionality
+        var modal = document.getElementById('enlarged-image');
+        var modalImg = document.getElementById('expanded-img');
+        var images = document.querySelectorAll('#sidebar img');
+        var closeBtn = document.getElementById('close');
+
+        images.forEach(function(image) {
+            image.addEventListener('click', function() {
+                modal.style.display = 'block';
+                modalImg.src = this.src;
+            });
+        });
+
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+
+        // Close modal when clicking outside the image
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        };
+</script>
+    <div id="textp">
+        
+        <h2>Location Description</h2>
+        <p id="description-paragraph" style="display: block; text-align: justify;">The Pease family built their house over some time from 1816 to 1826. Except for the years from 1855 to 1920, it has always been owned by the members of the Pease family. It is one of the best examples of the federal style in Oswego County.
+            The Pease family were early advocates of abolitionism. In 1837, Daniel, Miriam, and their daughter, Nancy, all signed a petition to Congress, praying for the abolition of slavery in the District of Columbia.  The next year, Daniel Pease signed another petition, requesting that political parties of Oswego County support only congressional candidates, who were in favor of the “immediate abolition of slavery in the District of Columbia,” and who favored the right to petition.
+            Family tradition, reinforced in newspaper articles in the late 19th and early 20th centuries, emphasizes using the Pease house and farm as a station on the underground railroad. One of their son’s obituaries notes that “Daniel Pease was an abolitionist, and in the agitation that preceded the Civil War days, pioneer home was part of the underground route by which fugitive slaves were us into Canada. These were stirring days in Oswego town, and Daniel Pease numbered among his personal friends, Gerrit Smith, who was prominent as an abolitionist.“ Another obituary noted that “Pease has spent his entire life in the house in which he died which was built by his parents, Daniel and Miriam Pease, some 90 years ago, at which time it was considered one of the largest and most pretentious dwellings in the town. In the early days of the abolition movement, before Abraham Lincoln freed the slaves, this house was one of the principal stations on the “underground railroad,” along which runaway slaves were spirited from the South to Canada. Hundreds of escaped negroes are said to have been fed and sheltered in the old barns on the place.”Best known of all the underground railroad stations in Oswego County because of the powerful, oral traditions that have been handed down through six generations of the Pease family  The Daniel and Miriam Pease’s house stands today as a tribute to Daniel’s fine craftsmanship and sturdy construction, as well as to the families moral commitment to the abolition of slavery.     
+        </p>
+
+        <!-- <h2>Description:</h2>
+        <p id="collapsed-text" style="display: none;">
+            Family tradition, reinforced in newspaper articles in the late 19th and early 20th centuries, emphasizes using the Pease house and farm as a station on the underground railroad. One of their son’s obituaries notes that “Daniel Pease was an abolitionist, and in the agitation that preceded the Civil War days, pioneer home was part of the underground route by which fugitive slaves were us into Canada. These were stirring days in Oswego town, and Daniel Pease numbered among his personal friends, Gerrit Smith, who was prominent as an abolitionist.“ Another obituary noted that “Pease has spent his entire life in the house in which he died which was built by his parents, Daniel and Miriam Pease, some 90 years ago, at which time it was considered one of the largest and most pretentious dwellings in the town. In the early days of the abolition movement, before Abraham Lincoln freed the slaves, this house was one of the principal stations on the “underground railroad,” along which runaway slaves were spirited from the South to Canada. Hundreds of escaped negroes are said to have been fed and sheltered in the old barns on the place.”Best known of all the underground railroad stations in Oswego County because of the powerful, oral traditions that have been handed down through six generations of the Pease family  The Daniel and Miriam Pease’s house stands today as a tribute to Daniel’s fine craftsmanship and sturdy construction, as well as to the families moral commitment to the abolition of slavery. 
+        </p>         -->
+       
+        <!-- <button id="readMoreButton" class="read-more-button" onclick="toggleText()">Read more</button> -->
+        <button id="speechButtonSummary">Read Text</button>
+        <!-- <button id="speechButtonDescription">Read Description</button> -->
+        <button id="stopButton">Stop Speech</button>
+    </div>
+
+    <script>
+        // Toggle visibility of description text
+        function toggleText() {
+            var collapsedText = document.getElementById("collapsed-text");
+            var readMoreButton = document.getElementById("readMoreButton");
+
+            if (collapsedText.style.display === "none") {
+                collapsedText.style.display = "block";
+                readMoreButton.textContent = "Read less";
+            } else {
+                collapsedText.style.display = "none";
+                readMoreButton.textContent = "Read more";
+            }
+        }
+        
+        // Function to read aloud the summary paragraph
+        function speakText() {
+            const message = new SpeechSynthesisUtterance();
+            message.text = document.getElementById('description-paragraph').innerText;
+            const speechSynthesis = window.speechSynthesis;
+            speechSynthesis.speak(message);
+        }
+        
+        // Function to read aloud the description paragraph
+        // function speakDescription() {
+        //     const message = new SpeechSynthesisUtterance();
+        //     message.text = document.getElementById('collapsed-text').innerText;
+        //     const speechSynthesis = window.speechSynthesis;
+        //     speechSynthesis.speak(message);
+        // }
+        
+        // Function to stop speech synthesis
+        function stopSpeech() {
+            window.speechSynthesis.cancel();
+        }
+
+        document.getElementById('speechButtonSummary').addEventListener('click', speakText);
+        // document.getElementById('speechButtonDescription').addEventListener('click', speakDescription);
+        document.getElementById('stopButton').addEventListener('click', stopSpeech);
+    </script>
+</body>
+</html>

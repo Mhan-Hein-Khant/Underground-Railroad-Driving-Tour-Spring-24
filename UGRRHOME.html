@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="Stylesheet" href="UGRRStyles.css">
+    <style>
+    .slideshow-container {
+        max-height: 100%;
+        scrollbar-width:auto ;
+        position: relative;
+        margin: auto;
+    }
+
+    .mySlides {
+        display: none;
+        background-color: rgba(0, 0, 0, 0.8);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 85%;
+        width: auto;
+        padding: 16px;
+        margin-top: -22px;
+        color: white;
+        box-shadow: 0 4px 8px rgb(0, 0, 0, 0.2);
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+    }
+
+    .next {
+        right: 10vw;
+        border-radius: 3px 0 0 3px;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .prev {
+        left: 10vw;
+        border-radius: 3px 0 0 3px;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .prev:hover, .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .text {
+        color: black;
+        font-size: 15px;
+        /* padding: 8px 12px; */
+        /* padding: 30px 60px; */
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+    }
+    </style>
+    <title>Oswego Underground Railroad Driving Tour</title>
+    
+
+</head>
+<body onload="slider()" data-new-gr-c-s-check-loaded="" data-gr-ext-installed="">
+    <nav>
+        <div class="logo">
+            <a style="text-decoration:none" href="index.html">
+                <img src="logo.png" alt="Website Logo">
+                <h1 style="font-size: 20px; padding-top: 0px;">Oswego<br>History<br>Tours</h1>
+            </a>
+        </div>
+
+        <div class="nav-items">
+            <a href="UGRRHOME.html">Home</a>
+            <!-- <a href="about.html">About</a> -->
+            <a href="https://oswegohistorical.org/contact/">Contact</a>
+        </div>
+    </nav>
+
+    <div class="slideshow-container" style="padding-top: 50px;">
+        <div class="content">
+            <h1>UNDERGROUND RAILROAD <br>DRIVING TOUR</h1>
+            
+            <!-- <h2>Tour Oswego's Underground Railroad History Today!</h2> -->
+           
+            <button class="StartB" id="RedirectMapPage">
+                <span>Begin Your Drive</span> 
+            </button>
+            <script>
+                // Add an event listener to the button
+                document.getElementById("RedirectMapPage").addEventListener("click", function() {
+                    // Change the webpage location
+                    window.location.href = "UGRRmapPage.html";
+                });
+            </script>
+
+            <br>
+            <br>
+            <br>
+
+        </div>
+        <div class="mySlides">
+            <img src="bgimg.png" style="width:100%" height="75%">
+        </div>
+        <div class="mySlides">
+            <img src="1.png" style="width:100%" height="75%">
+        </div>
+        <div class="mySlides">
+            <img src="2.png" style="width:100%" height="75%">
+        </div>
+        <div class="mySlides">
+            <img src="3.png" style="width:100%" height="75%">
+        </div>
+        <div class="mySlides">
+            <img src="4.png" style="width:100%" height="75%">
+        </div>
+        <div class="mySlides">
+            <img src="5.png" style="width:100%" height="75%">
+        </div>
+    
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+    </div>
+    
+
+
+
+                <div id = "blockHeader">
+                    <h1>Did you know that Oswego County has the second most <br>documented Underground Railroad sites in the country?</h1>
+                </div>
+                <div id = "block">
+                   <p><strong>This tour was created from extensive research in period documents,
+                       letters and newspapers done in 1998-2002 for a project called Freedom Trail. The main researchers
+                       and writers were Judith Wellman, Barbara Dix, and Helen Breitbeck. They created a pamphlet driving
+                       tour, interpretive panels, and historic markers at 34 verified sites. Most of the narratives in the
+                       tour are created from their writings.</strong></p>
+                       <br>
+                    <p><strong>There are two eras in the history of the Underground Railroad in New York. 
+                        Before 1850: Most northern states gradually abolished slavery in the first half of the 1800’s (New York in 1817) and if a person escaped into a free state in the north, they were generally considered safe. Many black families settled in Oswego County in the 1830s and 40s because this part of the country was known to be liberal, progressive, and sympathetic to the abolition of slavery. Several became businessmen and were active in the abolition movement. 
+                        After 1850: When the Fugitive Slave Act was passed in 1850, the area became more dangerous for African Americans. The law required that slaves be returned to their owners, even if they were in a free state. It also made the federal government responsible for finding, returning, and trying escaped slaves. So Underground Railroad routes were created into Canada. 
+                        The Port of Oswego was an important departure point after 1850. Freedom seekers embarking on the right steamer here ended up in Kingston or Toronto, Ontario. 
+                        Another escape route through the county beside the Oswego Canal, started in Syracuse, extended north on the Salt Road (New York State Route 11) turned at Colosse and came into Mexico (today’s Route 69). Then instead of coming into the city of Oswego, the route  went north on Route 3 to Henderson Harbor, Sackett’s Harbor, or even a further distance down the river. 
+                        The abolitionists who ran the routes were very organized and communicated extensively with each other. Freedom seekers were hidden in homes and outbuildings, and transported in carts, usually at night. Stories about tunnels and all kinds of elaborate, secret rooms are exaggerated myths.
+                        The sites on this tour are the verified way stations in individual homes or residences and commercial buildings associated with a person or event important in the Underground Railroad.
+                        Pick a point to start and take any path you choose to discover this engaging history of Oswego County. 
+                    </strong></p>
+                    
+                </div>
+
+    <footer>
+        <div class="footer-content">
+            <h3 style="padding-top: 20px; padding-bottom: 20px;">Additional Information</h3>
+            <!-- Add any additional links provided from stakeholder -->
+            <div class="block">
+                <p style="max-width: 50em; text-align: justify; margin-left: auto; margin-right: auto; line-height: 1.5; padding-left: 10vw; padding-right: 10vw;">
+                    The Oswego County Historical Society is a non-profit corporation organized with a mission to discover, collect, preserve and interpret materials and objects of the history of Oswego County, to sponsor writings and publications, and to promote public interest in Oswego County’s historical resources.
+                    Founded in 1896, the society has collected and maintained thousands of artifacts, photographs and manuscript collections that document the county’s rich history. In 1946, the historical society received the generous gift of a historic 19th century Tuscan Villa style residence to serve as a permanent headquarters and public museum. Since that time the society has operated the magnificent Richardson-Bates House Museum, a landmark listed on the National Register of Historic Places, at 135 East Third Street in the Washington Square Historic District. This distinctive residence offers a unique glimpse into the opulent lifestyle of a prominent Oswego family and serves as a museum dedicated to interpreting the history of the people, places and events of Oswego County through exhibits and educational programs.
+                </p>
+            </div>
+          
+            <ul class="socials">
+                <li><a href="https://www.facebook.com/richardsonbateshousemuseum"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="https://www.instagram.com/rbhousemuseum"><i class="fa fa-instagram"></i></a></li>
+            </ul>
+            <p>To learn about the developers of this page, Click the SUNY Oswego Students link below!</p><br>
+        </div>
+        <br>
+        <br>
+        <div class="footer-bottom">
+            <p style="padding-left: 5vw; padding-right: 5vw;">Oswego County Historical Society © 2024 <br> Designed by <a href="Studentpage.html"><u>SUNY Oswego Students</u></a> </p>
+        </div>
+    </footer>
+        
+        <script>
+            var slideIndex = 1;
+            showSlides(slideIndex);
+        
+            function plusSlides(n) {
+                showSlides(slideIndex += n);
+            }
+        
+            function currentSlide(n) {
+                showSlides(slideIndex = n);
+            }
+        
+            function showSlides(n) {
+                var i;
+                var slides = document.getElementsByClassName("mySlides");
+                if (n > slides.length) {slideIndex = 1}
+                if (n < 1) {slideIndex = slides.length}
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                slides[slideIndex-1].style.display = "block";
+            }
+        </script>
+    
+</body>
+
+</html>

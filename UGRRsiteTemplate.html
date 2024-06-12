@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title></title>
+<link rel="stylesheet" href="UGRRStyles.css">
+<style>
+.output {
+    flex: 1;
+}
+/* .another-big-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+} */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(315deg, #152545 0%, #5184a8 100%);
+    background-size: auto;
+    background-position: center;
+    color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+}
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color:black;
+    z-index: 1000; 
+}
+#map-container {
+    height: 400px;
+    width: 100%;
+    margin-top: 80px; 
+    margin-bottom: 20px;
+    padding-top: 1%;
+}
+/* #sidebar {
+    width: auto;
+    min-width: 50vh;
+    min-height: 50vh;
+    overflow-y: auto;
+    height: 100vh;
+    position: fixed;
+    top: 100px;
+    left: 950px;
+    padding: 10px;
+    padding-bottom: 11em;
+    box-shadow: -3px 5.5px 10px 3px #000000;   
+}
+#sidebar img {
+    width: 100%;
+    min-width: 30vh;
+    max-width: 65vh;
+    min-height: 20vh;
+    margin-bottom: 10px;
+} */
+#textp {
+    color: black;
+    font-size: 18px;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    padding: 30px 60px;
+    max-width: 949px;
+    background-image: url('bgimg4.png');
+    background-size: cover;
+    background-position: center; 
+}
+#speechButtonSummary {
+    left: 200px;
+    width: 175px;
+    height: 50px;
+    display: block;
+    margin-top: 20px;
+    background-color: rgba(56, 110, 235, 0.949);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+    font-size: 18px;
+}
+#stopButton {
+    left: 450px;
+    bottom: 70px;
+    width: 160px;
+    height: 50px;
+    display: block;
+    margin-top: 20px;
+    background-color: #c34747;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+    font-size: 18px;
+}
+
+</style>
+<!-------------------------------------------------------------------------------->
+<script src="locationData.js"></script>
+<!-------------------------------------------------------------------------------->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Function to set the title based on the name parameter in the URL
+    function setTitleFromURL() {
+        var urlParams =  new URLSearchParams(window.location.search);
+        var name = urlParams.get('name');
+        if (name) {
+            document.title = name;
+        }
+}
+    // Call the function to set the title from the URL
+    setTitleFromURL();
+});
+</script>
+<!------------------------------------------------------------------------------->
+<script>
+function speakText() {
+    const message = new SpeechSynthesisUtterance();
+    message.text = document.getElementById('description-paragraph').innerText;
+    const speechSynthesis = window.speechSynthesis;
+    speechSynthesis.speak(message);
+}
+function stopSpeech() {
+    window.speechSynthesis.cancel();
+}
+</script>
+<!-------------------------------------------------------------------------------->
+<script>
+    function parseTextFile(data, searchName) {
+// Check if the data is an array
+if (!Array.isArray(data)) {
+    console.error('Invalid data format. Expected an array.');
+    return;
+}
+// Find the location based on searchName
+var location = data.find(loc => loc.name === searchName);
+// If location is not found, display a message
+if (!location) {
+    console.error('Location not found:', searchName);
+    document.getElementById('output').innerHTML = 'Location not found';
+    return;
+}
+// Generate HTML markup for the found location
+var name = location.name;
+var address = location.address;
+var narrative = location.narrative;
+var link1 = location.link1;
+var link2 = location.link2;
+var map = location.map;
+var access = location.access;
+var htmlContent = `
+<nav>
+    <div class="logo">
+        <a style="text-decoration:none" href="index.html">
+            <img src="logo.png" alt="Website Logo">
+            <h1 style="font-size: 20px; padding-top: 0px;">Oswego<br>History<br>Tours</h1>
+        </a>
+    </div>
+
+    <div class="nav-items">
+        <a href="UGRRHOME.html">Home</a>
+        <a href="UGRRmapPage.html">Map Page</a>
+        <a href="https://oswegohistorical.org/contact/">Contact</a>
+    </div>
+</nav>
+
+<div id="map-container">
+    <iframe width="949px" height="430px" style="border: 2px solid black;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="${map}"></iframe>  
+</div>
+
+<div id="textp">
+    <br>
+    <h1>Location of ${name}</h1>
+    <h3><strong>Address:</strong> ${address}</h3>
+    <h3><strong>Access:</strong> <i>${access}</i></h3>
+    
+    <h3><strong>Learn More:</strong></h3> <a href=${link1} target="_blank">${link1}</a>
+    <h3><strong></strong></h3> <a href=${link2} target="_blank">${link2}</a>
+    <br>
+    <br>
+    <p id="description-paragraph" style="text-align: justify"><strong>${narrative}</strong></p>
+    
+    <button id="speechButtonSummary">Listen to Text</button>
+    <button id="stopButton">Stop Speech</button>
+    <br>
+    <h2>Photos of ${name}</h2>
+    <br>
+    <img src="Site_Photos/${name} 1.jpg" style="max-width: 800px" onerror="this.src='Image Error 2.png'" alt="Image 1">
+    <img src="Site_Photos/${name} 2.jpg" style="max-width: 800px" onerror="this.style.display='none'" alt="Image 2">
+    <img src="Site_Photos/${name} 3.jpg" style="max-width: 800px" onerror="this.style.display='none'" alt="Image 3">
+    <img src="Site_Photos/${name} 4.jpg" style="max-width: 800px" onerror="this.style.display='none'" alt="Image 4">
+    <img src="Site_Photos/${name} 5.jpg" style="max-width: 800px" onerror="this.style.display='none'" alt="Image 5">
+    <img src="Site_Photos/${name} 6.jpg" style="max-width: 800px" onerror="this.style.display='none'" alt="Image 6">
+    <img src="Site_Photos/${name} 7.jpg" style="max-width: 800px" onerror="this.style.display='none'" alt="Image 7">
+    <img src="Site_Photos/${name} 8.jpg" style="max-width: 800px" onerror="this.style.display='none'" alt="Image 8">
+    <img src="Site_Photos/${name} 9.jpg" style="max-width: 800px" onerror="this.style.display='none'" alt="Image 9">
+    <img src="Site_Photos/${name} 10.jpg" style="max-width: 800px" onerror="this.style.display='none'" alt="Image 10">
+    <!-- Add more images as needed -->
+</div>
+
+<footer>
+    <div class="footer-bottom">
+        <p>Oswego County Historical Society © 2024 <br> Designed by <a href="Studentpage.html"><u>SUNY Oswego Students</u></a> <span></span></p>
+    </div>
+</footer>
+
+
+`;
+        // Output HTML content to the page
+        console.log('Generated HTML content:', htmlContent); // Log generated HTML content
+        document.getElementById('output').innerHTML = htmlContent;
+        document.getElementById('speechButtonSummary').addEventListener('click', speakText);
+        document.getElementById('stopButton').addEventListener('click', stopSpeech);
+    }
+// Function to handle user input
+document.addEventListener("DOMContentLoaded", function() {
+function handleInput() {
+    var searchName = document.title; // Get the title of the site
+    // Call the parseTextFile function with the array and searchName
+    parseTextFile(locationData, searchName);
+}
+// Call handleInput() when the site is loaded
+handleInput();
+});
+</script>
+<!------------------------------------------------------------------------------------>
+</head>
+<body>
+<div id="output"></div> 
+
+</body>
+</html>
